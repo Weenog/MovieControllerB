@@ -18,7 +18,6 @@ C:\Users\Weenog\source\repos\MovieControllerB\bin\Debug\netcoreapp3.1\MovieWeb.V
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\MovieWeb.TagHelpers.input.cache
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\MovieWeb.TagHelpers.output.cache
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\MovieWeb.RazorCoreGenerate.cache
-C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -38,3 +37,5 @@ C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\MovieWeb.c
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Movie\Index.cshtml.g.cs
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Contact.cshtml.g.cs
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Movie\Create.cshtml.g.cs
+C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Movie\Detail.cshtml.g.cs
+C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs

@@ -54,7 +54,6 @@ namespace MovieWeb.Controllers
         }
 
 
-        [HttpPost]
         //public IActionResult Create(MovieCreateViewModel movie)
         //{
         //    Movie newMovie = new Movie()
@@ -74,21 +73,27 @@ namespace MovieWeb.Controllers
         {
             return View();
         }
+
+
+        [HttpPost]
         public IActionResult Create(MovieCreateViewModel Newmovie)
         {
-            _movieDatabase.Insert(new Movie
+
+            if (ModelState.IsValid) 
             {
-                Title = Newmovie.Title,
-                Description = Newmovie.Description,
-                Genre = Newmovie.Genre,
-                ReleaseDate = Newmovie.ReleaseDate
-            });
+                _movieDatabase.Insert(new Movie
+                {
+                    Title = Newmovie.Title,
+                    Description = Newmovie.Description,
+                    Genre = Newmovie.Genre,
+                    ReleaseDate = Newmovie.ReleaseDate
+                });
 
-
-            return RedirectToAction("Index");
-
-
-        }
+                return RedirectToAction("Index");
+                
+            }
+            return View(Newmovie);
+        } 
     }
 }
     

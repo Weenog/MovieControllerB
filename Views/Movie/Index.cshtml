@@ -1,17 +1,29 @@
-﻿@model IEnumerable<MovieWeb.Models.MovieListViewModel>
+﻿
+@model IEnumerable<MovieWeb.Models.MovieListViewModel>;
+
+
+
     <table>
-        <thead>
+
+
+        <p>
+                You are viewing Movie/Index
+            ..now how the hell do you get to Movie/Create?
+
+        </p>
+
+        @foreach (MovieWeb.Models.MovieListViewModel movie in Model)
+
+        {
+
             <tr>
-                <th>Title</th>
+
+                <td> <a asp-controller="movie" asp-action="detail/@movie.Id">@movie.Title</a> </td>
+
+
+
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var movie in Model)
-            {
-    <tr>
-        <td>
-            @movie.Title
-        </td>
-    </tr>}
-        </tbody>
+
+        }
+
     </table>

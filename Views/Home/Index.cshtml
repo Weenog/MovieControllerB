@@ -1,25 +1,17 @@
-﻿@*@{
-        ViewData["Title"] = "Home Page";
-    }
+﻿@{
 
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    </div>*@
+    ViewData["Title"] = "Home Page";
+
+}
 
 
-<h1>Welgekomen</h1>
+<p>
 
-@*@{
+  
 
-    string name = (string)ViewData["Name"];
-    int numberOfTimes = (int)ViewData["NumberofTimes"];
-}*@
+    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
+        You are viewing HOME/Index
 
-<ul>
-    @*@for (int i = 0; i < numberOfTimes; i++)
-    {
-        <li>Hallo @name </li>
-    }*@
-    <li>Halloooooooooooooooo</li>
-</ul>
+    </a>
+
+</p>
