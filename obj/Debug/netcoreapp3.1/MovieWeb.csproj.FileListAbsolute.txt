@@ -37,3 +37,4 @@ C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\MovieWeb.c
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\MovieWeb.csprojAssemblyReference.cache
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Movie\Index.cshtml.g.cs
 C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Contact.cshtml.g.cs
+C:\Users\Weenog\source\repos\MovieControllerB\obj\Debug\netcoreapp3.1\Razor\Views\Movie\Create.cshtml.g.cs

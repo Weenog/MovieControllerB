@@ -18,8 +18,8 @@ namespace MovieWeb.Controllers
     //[Route("Important")]
     public class MovieController : Controller
     {
-       
-     
+
+
 
 
         private readonly IMovieDatabase _movieDatabase;
@@ -56,28 +56,42 @@ namespace MovieWeb.Controllers
 
 
         [HttpPost]
-        public IActionResult Create(MovieCreateViewModel movie)
-        {
-            Movie newMovie = new Movie()
-            {
-                Title = movie.Title,
-                Description = movie.Description,
-                Genre = movie.Genre,
-                ReleaseDate = movie.ReleaseDate,
-                
-            };
+        //public IActionResult Create(MovieCreateViewModel movie)
+        //{
+        //    Movie newMovie = new Movie()
+        //    {
+        //        Title = movie.Title,
+        //        Description = movie.Description,
+        //        Genre = movie.Genre,
+        //        ReleaseDate = movie.ReleaseDate,
 
-            _movieDatabase.Insert(newMovie);
-            return RedirectToAction("Index");
-        }
+        //    };
 
-         public IActionResult Create()
+        //    _movieDatabase.Insert(newMovie);
+        //    return RedirectToAction("Index");
+        //}
+
+        public IActionResult Create()
         {
             return View();
         }
+        public IActionResult Create(MovieCreateViewModel Newmovie)
+        {
+            _movieDatabase.Insert(new Movie
+            {
+                Title = Newmovie.Title,
+                Description = Newmovie.Description,
+                Genre = Newmovie.Genre,
+                ReleaseDate = Newmovie.ReleaseDate
+            });
 
-        }        
+
+            return RedirectToAction("index");
+
+
         }
+    }
+}
     
 
 
