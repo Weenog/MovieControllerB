@@ -1,39 +1,60 @@
 ﻿
-@{
-
-    string title = "Movie Detail";
-
-}
-
-
-
-@model MovieWeb.Models.MovieDetailViewModel;
-
-
-
-<h2>@title</h2>
-
-
+@model MovieWeb.Models.MovieDetailViewModel
 
 <strong>Title</strong>
-
 <p>@Model.Title</p>
 
-
-
 <strong>Description</strong>
-
 <p>@Model.Description</p>
 
-
-
 <strong>Genre</strong>
-
 <p>@Model.Genre</p>
 
-
-
 <strong>Release Date</strong>
-
 <p>@Model.ReleaseDate.ToShortDateString() </p>
 
+@functions {
+
+    string ReleaseDate(string genre)
+
+    {
+
+        if (String.IsNullOrEmpty(genre))
+
+        {
+
+            return "No genre available";
+
+        }
+
+        else
+
+        {
+
+            return genre;
+
+        }
+
+
+
+    }
+
+    string CalculateReleaseDate(DateTime releaseDate)
+
+    {
+
+        if (releaseDate < DateTime.Now)
+
+            return "Film is out now";
+
+
+
+        var amount = (releaseDate - DateTime.Now).Days;
+
+
+
+        return $"Film will release in {amount} days";
+
+    }
+
+}

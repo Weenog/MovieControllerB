@@ -22,9 +22,9 @@ namespace MovieWeb.Controllers
 
 
         private readonly IMovieDatabase _movieDatabase;
-        public MovieController(IMovieDatabase movieDatabase)
+        public MovieController(IMovieDatabase movies)
         {
-            _movieDatabase = movieDatabase;
+            _movieDatabase = movies;
         }
 
         //[Route("")]
@@ -54,20 +54,6 @@ namespace MovieWeb.Controllers
         }
 
 
-        //public IActionResult Create(MovieCreateViewModel movie)
-        //{
-        //    Movie newMovie = new Movie()
-        //    {
-        //        Title = movie.Title,
-        //        Description = movie.Description,
-        //        Genre = movie.Genre,
-        //        ReleaseDate = movie.ReleaseDate,
-
-        //    };
-
-        //    _movieDatabase.Insert(newMovie);
-        //    return RedirectToAction("Index");
-        //}
 
         public IActionResult Create()
         {
@@ -76,23 +62,23 @@ namespace MovieWeb.Controllers
 
 
         [HttpPost]
-        public IActionResult Create(MovieCreateViewModel Newmovie)
+        public IActionResult Create(MovieCreateViewModel NewMovie)
         {
 
             if (ModelState.IsValid) 
             {
                 _movieDatabase.Insert(new Movie
                 {
-                    Title = Newmovie.Title,
-                    Description = Newmovie.Description,
-                    Genre = Newmovie.Genre,
-                    ReleaseDate = Newmovie.ReleaseDate
+                    Title = NewMovie.Title,
+                    Description = NewMovie.Description,
+                    Genre = NewMovie.Genre,
+                    ReleaseDate = NewMovie.ReleaseDate
                 });
 
                 return RedirectToAction("Index");
                 
             }
-            return View(Newmovie);
+            return View(NewMovie);
         } 
     }
 }
