@@ -13,12 +13,11 @@ using MovieWeb.Models;
 namespace MovieWeb.Controllers
 {
 
-    [Route("Movie")]
+    //[Route("Movie")]
     //[Route("Privacy")]
     //[Route("Important")]
     public class MovieController : Controller
     {
-
 
 
 
@@ -28,8 +27,8 @@ namespace MovieWeb.Controllers
             _movieDatabase = movieDatabase;
         }
 
-        [Route("")]
-        [Route("Index")]
+        //[Route("")]
+        //[Route("Index")]
 
         public IActionResult Index(int ID)
         {
@@ -86,7 +85,7 @@ namespace MovieWeb.Controllers
             });
 
 
-            return RedirectToAction("index");
+            return RedirectToAction("Index");
 
 
         }

@@ -9,7 +9,7 @@ using MovieControllerB.Models;
 
 namespace MovieControllerB.Controllers
 {
-    [Route("home")]
+    //[Route("home")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,14 +23,13 @@ namespace MovieControllerB.Controllers
         {
             return View();
         }
-        [Route("/privacy")]
-        [Route("/important")]
+      
         public IActionResult Privacy()
         {
             return View();
         }
 
-        [Route("contact")]
+       
         public IActionResult Contact()
         {
             return View();
