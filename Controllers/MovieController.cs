@@ -16,6 +16,11 @@ namespace MovieWeb.Controllers
     public class MovieController : Controller
     {
         private readonly IMovieDatabase _movieDatabase;
+        private object movieFromDb;
+
+        public object Id { get; private set; }
+        public object Title { get; private set; }
+
         public MovieController(IMovieDatabase movies)
         {
             _movieDatabase = movies;
@@ -61,15 +66,11 @@ namespace MovieWeb.Controllers
 
 
         [HttpPost]
-       
+
 
         public IActionResult Create(MovieCreateViewModel NewMovie)
         {
-
-
-
             if (!TryValidateModel(NewMovie))
-
             {
 
                 return View(NewMovie);
@@ -92,12 +93,62 @@ namespace MovieWeb.Controllers
 
             return RedirectToAction("index");
 
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Movie movieFromDb = _movieDatabase.GetMovie(id);
+            MovieEditViewModel viewModel = new MovieEditViewModel()
+            {
+                Title = movieFromDb.Title,
+                Description = movieFromDb.Description,
+                ReleaseDate = movieFromDb.ReleaseDate,
+                Genre = movieFromDb.Genre
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, MovieEditViewModel ViewModel)
+        {
+
+            Movie movie = new Movie()
+            {
+                Title = ViewModel.Title,
+                Description = ViewModel.Description,
+                ReleaseDate = ViewModel.ReleaseDate,
+                Genre = ViewModel.Genre
+            };
+
+            _movieDatabase.Update(id, movie);
+            return RedirectToAction("Detail", new { Id = id });
+        }
+
+        public IActionResult Delete(int id)
+        {
+            Movie movieFromDB = _movieDatabase.GetMovie(id);
 
 
+            MovieDeleteViewModel movie = new MovieDeleteViewModel();
+            {
+                Id = movieFromDB.Id;
 
+                Title = movieFromDB.Title;
+            };
+
+            return View(movie);
+        }
+        [HttpPost]
+        public IActionResult ConfirmDelete(int id)
+
+        {
+
+            _movieDatabase.Delete(id);
+            return RedirectToAction("Index");
 
         }
 
     }
 
 }
+

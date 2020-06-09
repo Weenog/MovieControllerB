@@ -19,8 +19,12 @@ else
     {
 
         <tr>
-            <td> 
-                <a asp-controller="movie" asp-action="detail" asp-route-id="@movie.Id">Detail</a> 
+            <td>
+                @movie.Title
+
+                <a asp-controller="movie" asp-action="detail" asp-route-id="@movie.Id">Detail</a>
+                <a asp-controller="movie" asp-action="edit" asp-route-id="@movie.Id">Edit</a>
+                <a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.Id">Delete</a>
             </td>
         </tr>
     }
