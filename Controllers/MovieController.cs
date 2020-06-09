@@ -129,11 +129,11 @@ namespace MovieWeb.Controllers
             Movie movieFromDB = _movieDatabase.GetMovie(id);
 
 
-            MovieDeleteViewModel movie = new MovieDeleteViewModel();
+            MovieDeleteViewModel movie = new MovieDeleteViewModel()
             {
-                Id = movieFromDB.Id;
+                Id = id,
 
-                Title = movieFromDB.Title;
+                Title = movieFromDB.Title
             };
 
             return View(movie);
