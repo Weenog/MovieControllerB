@@ -1,29 +1,79 @@
 ﻿
-@model MovieWeb.Models.MovieDetailViewModel
+@{
+
+    string title = "Movie Detail";
+
+}
+
+
+
+@model MovieWeb.Models.MovieDetailViewModel;
+
+
+
+<h2>@title</h2>
+
+
 
 <strong>Title</strong>
+
 <p>@Model.Title</p>
 
+
+
 <strong>Description</strong>
+
 <p>@Model.Description</p>
 
+
+
 <strong>Genre</strong>
-<p>@Model.Genre</p>
 
-<strong>Release Date</strong>
-<p>@Model.ReleaseDate.ToShortDateString() </p>
+@{
 
-@functions {
-
-    string ReleaseDate(string genre)
+    if (string.IsNullOrEmpty(Model.Genre))
 
     {
 
-        if (String.IsNullOrEmpty(genre))
+        <p>No genre specified.</p>
+
+    }
+
+    else
+
+    {
+
+        <p>@Model.Genre</p>
+
+    }
+
+}
+
+
+
+
+
+<strong>Release Date</strong>
+
+<p>@Model.ReleaseDate.ToShortDateString() </p>
+
+<p>@CalculateReleaseDateMessage(Model.ReleaseDate)</p>
+
+
+
+
+
+@functions{
+
+    string CalculateReleaseDateMessage(DateTime releaseDate)
+
+    {
+
+        if (releaseDate.Date <= DateTime.Today.Date)
 
         {
 
-            return "No genre available";
+            return "Out now";
 
         }
 
@@ -31,29 +81,27 @@
 
         {
 
-            return genre;
+            double diffDays = (releaseDate - DateTime.Today).TotalDays;
+
+            if (diffDays == 1)
+
+            {
+
+                return $"The movie comes out tomorrow.";
+
+            }
+
+            else
+
+            {
+
+                return $"The movie comes out in {diffDays} days.";
+
+            }
+
+
 
         }
-
-
-
-    }
-
-    string CalculateReleaseDate(DateTime releaseDate)
-
-    {
-
-        if (releaseDate < DateTime.Now)
-
-            return "Film is out now";
-
-
-
-        var amount = (releaseDate - DateTime.Now).Days;
-
-
-
-        return $"Film will release in {amount} days";
 
     }
 

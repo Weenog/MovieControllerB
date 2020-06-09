@@ -6,21 +6,15 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor.Compilation;
-using MovieControllerB.Domain;
+using MovieWeb.Domain;
 using MovieWeb.Database;
 using MovieWeb.Models;
 
 namespace MovieWeb.Controllers
 {
 
-    //[Route("Movie")]
-    //[Route("Privacy")]
-    //[Route("Important")]
     public class MovieController : Controller
     {
-
-
-
         private readonly IMovieDatabase _movieDatabase;
         public MovieController(IMovieDatabase movies)
         {
@@ -30,13 +24,13 @@ namespace MovieWeb.Controllers
         //[Route("")]
         //[Route("Index")]
 
-        public IActionResult Index(int ID)
+        public IActionResult Index(int Id)
         {
             IEnumerable<Movie> moviesFromDb = _movieDatabase.GetMovies();
             List<MovieListViewModel> movies = new List<MovieListViewModel>();
             foreach (Movie movie in moviesFromDb)
             {
-                movies.Add(new MovieListViewModel() { Id = movie.ID, Title = movie.Title });
+                movies.Add(new MovieListViewModel() { Id = movie.Id, Title = movie.Title });
             }
             return View(movies);
         }
@@ -57,31 +51,53 @@ namespace MovieWeb.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            MovieCreateViewModel vm = new MovieCreateViewModel()
+            {
+                ReleaseDate = DateTime.Now
+            };
+
+            return View(vm);
         }
 
 
         [HttpPost]
+       
+
         public IActionResult Create(MovieCreateViewModel NewMovie)
         {
 
-            if (ModelState.IsValid) 
+
+
+            if (!TryValidateModel(NewMovie))
+
             {
-                _movieDatabase.Insert(new Movie
-                {
-                    Title = NewMovie.Title,
-                    Description = NewMovie.Description,
-                    Genre = NewMovie.Genre,
-                    ReleaseDate = NewMovie.ReleaseDate
-                });
 
-                return RedirectToAction("Index");
-                
+                return View(NewMovie);
+
             }
-            return View(NewMovie);
-        } 
+
+            _movieDatabase.Insert(new Movie
+
+            {
+
+                Title = NewMovie.Title,
+
+                Description = NewMovie.Description,
+
+                Genre = NewMovie.Genre,
+
+                ReleaseDate = NewMovie.ReleaseDate
+
+            });
+
+            return RedirectToAction("index");
+
+
+
+
+
+        }
+
     }
+
 }
-    
-
-

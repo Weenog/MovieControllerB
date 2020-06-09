@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MovieControllerB.Domain
+namespace MovieWeb.Domain
 {
     public class Movie
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Title {get; set;}
         public string Description { get; set; }
         public string Genre { get; set; }

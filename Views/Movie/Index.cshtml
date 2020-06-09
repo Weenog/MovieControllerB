@@ -3,27 +3,27 @@
 
 
 
-    <table>
+<p>
+    You are viewing Movie/Index
+    Filmoverzicht
+</p>
 
+@if (Model == null || !Model.Any())
+{
 
-        <p>
-                You are viewing Movie/Index
-            ..now how the hell do you get to Movie/Create?
+    <p>Er zijn geen films</p>
+}
+else
+{
+    @foreach (MovieWeb.Models.MovieListViewModel movie in Model)
+    {
 
-        </p>
+        <tr>
+            <td> 
+                <a asp-controller="movie" asp-action="detail" asp-route-id="@movie.Id">Detail</a> 
+            </td>
+        </tr>
+    }
 
-        @foreach (MovieWeb.Models.MovieListViewModel movie in Model)
+}
 
-        {
-
-            <tr>
-
-                <td> <a asp-controller="movie" asp-action="detail/@movie.Id">@movie.Title</a> </td>
-
-
-
-            </tr>
-
-        }
-
-    </table>
